@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Webpage Design</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="main">
+        <div class="navbar">
+            <div class="icon">
+                <h2 class="logo">PLAYERS</h2>
+            </div>
+
+            <div class="menu">
+                <ul>
+                    <li><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">SERVICE</a></li>
+                    <li><a href="#">DESIGN</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                </ul >     </div>
+
+            <div class="search">
+                <input class="srch" type="search" name="" placeholder="Type To text">
+                <a href="#"> <button class="btn">Search</button></a>
+            </div>
+
+        </div> 
+        <div class="content">
+            <h1>LET`S PLAY <br><span>Tic- Tac- Toe</span> <br></h1>
+            <p class="par">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt neque 
+                 expedita atque eveniet <br> quis nesciunt. Quos nulla vero consequuntur, fugit nemo ad delectus 
+                <br> a quae totam ipsa illum minus laudantium?</p>
+
+                <button class="cn"><a href="#">JOIN US</a></button>
+
+                <div class="form">
+                    
+    <style>
+        body {
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to bottom right, #3498db, #2ecc71);
+            color: #fff;
+        }
+
+        #board {
+            display: grid;
+            grid-template-columns: repeat(3, 100px);
+            grid-gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .cell {
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            font-size: 2em;
+            cursor: pointer;
+            border: 2px solid #fff;
+            background: #3498db;
+            color: #fff;
+        }
+
+        .result-screen {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            background: #2ecc71;
+            border: none;
+            color: #fff;
+            border-radius: 5px;
+        }
+    </style>
+    <title>Tic-Tac-Toe</title>
+</head>
+<body>
+    <div id="board"></div>
+    <div id="result-screen" class="result-screen">
+        <h2 id="result-message"></h2>
+        <button id="new-game-btn">New Game</button>
+    </div>
+    
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const board = document.getElementById('board');
+            const resultScreen = document.getElementById('result-screen');
+            const resultMessage = document.getElementById('result-message');
+            const newGameBtn = document.getElementById('new-game-btn');
+
+            let currentPlayer = 'X';
+            let gameBoard = ['', '', '', '', '', '', '', '', ''];
+
+            function checkWinner() {
+                const winPatterns = [
+                    [0, 1, 2], [3, 4, 5], [6, 7, 8], // rows
+                    [0, 3, 6], [1, 4, 7], [2, 5, 8], // columns
+                    [0, 4, 8], [2, 4, 6]             // diagonals
+                ];
+
+                for (const pattern of winPatterns) {
+                    const [a, b, c] = pattern;
+                    if (gameBoard[a] !== '' && gameBoard[a] === gameBoard[b] && gameBoard[b] === gameBoard[c]) {
+                        return true;
+                    }
+                }
+
+                return false;
+            }
+
+            function checkTie() {
+                return !gameBoard.includes('');
+            }
+
+            function handleCellClick(index) {
+                if (gameBoard[index] === '' && !checkWinner()) {
+                    gameBoard[index] = currentPlayer;
+                    renderBoard();
+
+                    if (checkWinner()) {
+                        showResult(`Player ${currentPlayer} wins!`);
+                    } else if (checkTie()) {
+                        showResult('It\'s a tie!');
+                    } else {
+                        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+                    }
+                }
+            }
+
+            function renderBoard() {
+                board.innerHTML = '';
+                gameBoard.forEach((value, index) => {
+                    const cell = document.createElement('div');
+                    cell.classList.add('cell');
+                    cell.textContent = value;
+                    cell.addEventListener('click', () => handleCellClick(index));
+                    board.appendChild(cell);
+                });
+            }
+
+            function showResult(message) {
+                resultMessage.textContent = message;
+                resultScreen.style.display = 'block';
+            }
+
+            newGameBtn.addEventListener('click', () => {
+                resultScreen.style.display = 'none';
+                currentPlayer = 'X';
+                gameBoard = ['', '', '', '', '', '', '', '', ''];
+                renderBoard();
+            });
+
+            renderBoard();
+        });
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+                    </div>
+
+                </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+</body>
+</html>
